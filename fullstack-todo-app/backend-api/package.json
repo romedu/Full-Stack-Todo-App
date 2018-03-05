@@ -1,0 +1,16 @@
+{
+  "name": "fullstack-todo-app",
+  "version": "1.0.0",
+  "description": "My first fullstack app using react in the frontend and node in the backend. Actually first time using a front-end framework in a fullstack app.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "romedu",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "mongoose": "^5.0.8"
+  }
+}
