@@ -1,9 +1,7 @@
 import React, {Component} from "react";
 import TodoForm from "./TodoForm";
 import Todo from "./Todo";
-import qwest from "qwest";
-
-qwest.base = "/api/todo";
+import * as apiCall from "./apiCalls";
 
 class TodoApp extends Component {
    constructor(props){
@@ -27,29 +25,25 @@ class TodoApp extends Component {
       this.setState({formValue});
    }
    
-   createTodo(){
-      qwest.post("/", {name: this.state.formValue})
-      .then(newTodo => this.refreshTodos())
-      .catch(error => console.log(error));
+   async createTodo(){
+      await apiCall.createTodo(this.state.formValue);
+      this.refreshTodos();
    }
    
-   updateTodo(id, value){
-      qwest.put(`/${id}`, {completed: value})
-      .then(editedTodo => this.refreshTodos())
-      .catch(error => console.log(error));
+   async updateTodo(id, value){
+      await apiCall.updateTodo(id, value);
+      this.refreshTodos();
    }
    
-   deleteTodo(id){
-      qwest.delete(`/${id}`)
-      .then(deletedTodo => this.refreshTodos())
-      .catch(error => console.log(error));
+   async deleteTodo(id){
+      await apiCall.deleteTodo(id);
+      this.refreshTodos();
+      
    }
    
-   refreshTodos(){
-      qwest.get("/")
-      .then(xhr => JSON.parse(xhr.response))
-      .then(todos => {this.setState({todos, formValue: ""})})
-      .catch(error => console.log(error));
+   async refreshTodos(){
+      let todos = await apiCall.getTodos();
+      this.setState({todos, formValue: ""});
    }
    
    render(){
