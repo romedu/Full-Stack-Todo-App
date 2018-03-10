@@ -4,7 +4,8 @@
   "description": "My first fullstack app using react in the frontend and node in the backend. Actually first time using a front-end framework in a fullstack app.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "author": "romedu",
   "license": "ISC",
