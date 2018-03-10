@@ -15,7 +15,6 @@ class TodoForm extends Component {
       return (
          <form onSubmit={this.handleSubmit}>
             <input type="text" value={this.props.value} placeholder="Type in your new Todo" autoComplete="false" onChange={this.handleChange} />
-            <button type="submit"> Submit </button>
          </form>
       );
    }
